@@ -59,11 +59,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LAbel
+  m_text: Label
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6fb1b054401411443848d933011eeef0, type: 2}
   m_sharedMaterial: {fileID: -1830960999182746827, guid: 6fb1b054401411443848d933011eeef0,

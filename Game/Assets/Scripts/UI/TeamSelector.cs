@@ -11,6 +11,10 @@ namespace Seconds.UI
 
 
 		[SerializeField]
+		private bool enabledDefault = true;
+
+
+		[SerializeField]
 		private TMP_InputField inputFieldTeamName = null;
 
 		[SerializeField]
@@ -37,6 +41,8 @@ namespace Seconds.UI
 		{
 			inputFieldTeamName.onValueChanged.AddListener(OnInputFieldTeamNameValueChanged);
 			toggleEnabled.onValueChanged.AddListener(OnToggleEnabledValueChanged);
+
+			toggleEnabled.isOn = enabledDefault;
 		}
 
 		private void OnDestroy()
@@ -55,6 +61,13 @@ namespace Seconds.UI
 			inputFieldTeamName.interactable = newValue;
 
 			OnStateChanged?.Invoke(this);
+		}
+
+
+		private void OnValidate()
+		{
+			toggleEnabled.isOn = enabledDefault;
+			inputFieldTeamName.interactable = enabledDefault;
 		}
 	}
 }
