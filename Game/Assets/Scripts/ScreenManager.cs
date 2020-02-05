@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Framework.Dependency;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,19 +23,10 @@ namespace Seconds
 
 		private Screen currentScreen = null;
 
-		public void Awake()
+
+		public void RegisterScreen()
 		{
-			Instance = this;
 
-			foreach (Screen screen in screens)
-			{
-				screen.transform.SetParent(canvas.transform);
-				screen.transform.localPosition = Vector3.zero;
-
-				screen.gameObject.SetActive(false);
-			}
-
-			Switch(startScreen);
 		}
 
 		public void Switch(Screen to)
@@ -51,5 +42,22 @@ namespace Seconds
 			to.gameObject.SetActive(true);
 			to.OnEnter();
 		}
+
+		private void Awake()
+		{
+			SceneOrganizer.Register(this);
+
+			foreach (Screen screen in screens)
+			{
+				screen.transform.SetParent(canvas.transform);
+				screen.transform.localPosition = Vector3.zero;
+
+				screen.gameObject.SetActive(false);
+			}
+
+			Switch(startScreen);
+		}
+
+		
 	}
 }
